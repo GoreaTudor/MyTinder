@@ -11,6 +11,7 @@
         android:layout_height="wrap_content">
 
         <TableLayout
+            android:id="@+id/reg_tableLayout_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -23,7 +24,7 @@
             <TableRow
                 android:id="@+id/reg_row_fname"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/reg_label_fname"
@@ -42,7 +43,7 @@
             <TableRow
                 android:id="@+id/reg_row_mail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/reg_label_mail"
@@ -61,7 +62,7 @@
             <TableRow
                 android:id="@+id/reg_row_age"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/reg_label_age"
@@ -77,6 +78,108 @@
                     android:inputType="numberSigned" />
             </TableRow>
 
+            <TableRow
+                android:id="@+id/reg_row_uname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_label_uname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/uname" />
+
+                <EditText
+                    android:id="@+id/reg_textBox_uname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/reg_row_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_label_pwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pwd" />
+
+                <EditText
+                    android:id="@+id/reg_textBox_pwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/reg_row_cpwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/reg_label_cpwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cpwd" />
+
+                <EditText
+                    android:id="@+id/reg_textBox_cpwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+            </TableRow>
+
         </TableLayout>
+
+        <RadioGroup
+            android:id="@+id/reg_radioGroup_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reg_tableLayout_data">
+
+            <TextView
+                android:id="@+id/reg_label_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender_label" />
+
+            <RadioButton
+                android:id="@+id/reg_radio_nope"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/gender_nope" />
+
+            <RadioButton
+                android:id="@+id/reg_radio_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/gender_male" />
+
+            <RadioButton
+                android:id="@+id/reg_radio_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/gender_female" />
+
+            <RadioButton
+                android:id="@+id/reg_radio_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/gender_other" />
+        </RadioGroup>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
