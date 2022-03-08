@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MyTinder_1</string>
+
+    <string name="uname">Username:</string>
+    <string name="fname">Full Name:</string>
+    <string name="pwd">Password:</string>
+    <string name="age">Age:</string>
+
+    <string name="noAccount">No account? Press here to register</string>
 </resources>
