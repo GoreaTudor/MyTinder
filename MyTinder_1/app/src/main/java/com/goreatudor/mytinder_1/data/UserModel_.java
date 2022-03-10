@@ -19,4 +19,31 @@ public class UserModel_ {
         this.gender = g;
     }
 
+    public String toString() {
+        String g;
+        if (this.gender == Gender.male) g = "male";
+        else if (this.gender == Gender.female) g = "female";
+        else if (this.gender == Gender.other) g = "other";
+        else g = "nope";
+
+        return "User={" +
+                "uname=\"" +
+                this.username +
+                "\", " +
+                "fname=\"" +
+                this.fullName +
+                "\", " +
+                "mail=\"" +
+                this.mail +
+                "\", " +
+                "age=" +
+                this.age +
+                ", " +
+                "pwd=" +
+                this.password +
+                ", " +
+                "gender=" +
+                g +
+                "}";
+    }
 }
