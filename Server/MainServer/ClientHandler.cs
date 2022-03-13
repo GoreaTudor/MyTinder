@@ -78,7 +78,13 @@ namespace Server_v1 {
         private void handleMessage(String message) {
             String[] arrayMessage = message.Split("#");
 
-            if(arrayMessage[0].StartsWith(Messages.sRegNew)) {
+            if (arrayMessage[0].StartsWith(Messages.sTestAdd)) {
+                DbHandler.instance.TEST_Add();
+
+            } else if (arrayMessage[0].StartsWith(Messages.sTestGet)) {
+                DbHandler.instance.TEST_Get();
+
+            } else if(arrayMessage[0].StartsWith(Messages.sRegNew)) {
                 if (arrayMessage.Length >= 4) {
                     String username = arrayMessage[1];
                     String password = arrayMessage[2];
