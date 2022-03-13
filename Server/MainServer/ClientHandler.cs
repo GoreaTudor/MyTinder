@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using System.Text;
 using System.Threading;
 using System.Net.Sockets;
+
+using Server.Data;
 
 namespace Server_v1 {
     class ClientHandler {
@@ -27,7 +30,7 @@ namespace Server_v1 {
 
         private void run() {
             while (_shouldRun) {
-                byte[] rawMessage = new byte[20]; // the receive buffer
+                byte[] rawMessage = new byte[100]; // the receive buffer
 
                 try {
                     // preia mesajul
@@ -42,6 +45,7 @@ namespace Server_v1 {
                     }
 
                 } catch (Exception e) {
+                    Console.WriteLine(e.ToString());
                     return;
                 }
 
@@ -72,13 +76,36 @@ namespace Server_v1 {
 
 
         private void handleMessage(String message) {
-            String[] arrayMessage = message.Split("-");
+            String[] arrayMessage = message.Split("#");
 
-            if (arrayMessage[0].StartsWith(Messages.sLoginReq)) {
-                Console.WriteLine(arrayMessage[1]); // probabil username sau ce vreau eu idk
+            if(arrayMessage[0].StartsWith(Messages.sRegNew)) {
+                if (arrayMessage.Length >= 4) {
+                    String username = arrayMessage[1];
+                    String password = arrayMessage[2];
+                    String data = arrayMessage[3];
 
-                if (arrayMessage[1].StartsWith("Tudor")) {
-                    Console.WriteLine("Heyy, it's Tudor!"); // login_req-Tudor
+                    User user = new User(username, password, data);
+                    User.users.Add(user);
+                    Console.WriteLine("New user:" + user.ToString());
+                }
+
+            } else if (arrayMessage[0].StartsWith(Messages.sLoginReq)) {
+                if (arrayMessage.Length >= 3) {
+                    String username = arrayMessage[1];
+                    String password = arrayMessage[2];
+
+                    User user = null;
+                    try {
+                        user = (from u in User.users
+                                where u.username == username && u.password == password.GetHashCode()
+                                select u
+                                ).First();
+
+                        Console.WriteLine("Data: " + user.data);
+
+                    } catch (Exception e) {
+                        Console.WriteLine("No user found");
+                    }
                 }
             }
 
