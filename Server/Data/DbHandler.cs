@@ -12,7 +12,7 @@ namespace Server.Data {
 
         SQLiteConnection connection = null;
         
-
+        /// Database base handling ///
         private void ConnectToDB() {
             if (!isConnectionOpened()) {
                 connection = new SQLiteConnection("Data Source=UsersDB.sqlite; Version=3;");
@@ -32,11 +32,15 @@ namespace Server.Data {
             }
         }
 
-        private bool isConnectionOpened () {
+        private bool isConnectionOpened() {
             return connection != null && connection.State == System.Data.ConnectionState.Open;
         }
 
 
+        /// Database Operations ///
+
+
+        /// TESTS ///
         public void TEST_Add() {
             ConnectToDB();
             if (isConnectionOpened()) {
