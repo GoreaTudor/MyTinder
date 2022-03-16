@@ -78,13 +78,17 @@ namespace Server_v1 {
         private void handleMessage(String message) {
             String[] arrayMessage = message.Split("#");
 
-            if (arrayMessage[0].StartsWith(Messages.sTestAdd)) {
+            if (arrayMessage[0].StartsWith(Messages.sTestAdd)) {            // TEST ADD
                 DbHandler.instance.TEST_Add();
+                sendResponseExample("Response example ADD");
 
-            } else if (arrayMessage[0].StartsWith(Messages.sTestGet)) {
+
+            } else if (arrayMessage[0].StartsWith(Messages.sTestGet)) {     // TEST GET
                 DbHandler.instance.TEST_Get();
+                sendResponseExample("Response example GET");
 
-            } else if(arrayMessage[0].StartsWith(Messages.sRegNew)) {
+
+            } else if(arrayMessage[0].StartsWith(Messages.sRegNew)) {       // REGISTER
                 if (arrayMessage.Length >= 4) {
                     String username = arrayMessage[1];
                     String password = arrayMessage[2];
@@ -93,9 +97,10 @@ namespace Server_v1 {
                     User user = new User(username, password, data);
                     User.users.Add(user);
                     Console.WriteLine("New user:" + user.ToString());
+                    sendResponse("Account created");
                 }
 
-            } else if (arrayMessage[0].StartsWith(Messages.sLoginReq)) {
+            } else if (arrayMessage[0].StartsWith(Messages.sLoginReq)) {    // LOGIN REQUEST
                 if (arrayMessage.Length >= 3) {
                     String username = arrayMessage[1];
                     String password = arrayMessage[2];
@@ -108,20 +113,26 @@ namespace Server_v1 {
                                 ).First();
 
                         Console.WriteLine("Data: " + user.data);
+                        sendResponse("Data: " + user.data);
 
                     } catch (Exception e) {
-                        Console.WriteLine("No user found");
+                        String response = "No user found";
+                        Console.WriteLine(response);
+                        sendResponse(response);
                     }
                 }
             }
 
         }
 
-        private void sendResponseLogin(String message) {
+        private void sendResponse(String message) {
+            _socket.Send(Encoding.ASCII.GetBytes(message));
+        }
+
+        private void sendResponseExample(String message) {
             // creez un raspuns
             StringBuilder response = new StringBuilder();
-            response.Append("login");
-            response.Append("ok");
+            response.Append(message);
 
             // il convertesc in byte[]
             byte[] responeMessage = Encoding.ASCII.GetBytes(response.ToString());

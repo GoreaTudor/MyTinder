@@ -12,7 +12,7 @@ namespace Server.Data {
 
         SQLiteConnection connection = null;
         
-        /// Database base handling ///
+        /// Database connection ///
         private void ConnectToDB() {
             if (!isConnectionOpened()) {
                 connection = new SQLiteConnection("Data Source=UsersDB.sqlite; Version=3;");
