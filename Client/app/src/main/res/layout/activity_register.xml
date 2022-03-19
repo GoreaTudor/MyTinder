@@ -1,80 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.activities.RegisterActivity">
 
-    <TableLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <TableRow
-            android:id="@+id/reg_row_fname"
+        <TableLayout
+            android:id="@+id/reg_layout_credidentials"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow
+                android:id="@+id/reg_row_credidentials"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_lbl_credidentials"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/credidentials"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/reg_row_mail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_lbl_mail"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mail" />
+
+                <EditText
+                    android:id="@+id/reg_textBox_mail"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/reg_row_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_lbl_pwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password" />
+
+                <EditText
+                    android:id="@+id/reg_textBox_pwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/reg_row_cpwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_lbl_cpwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirm_password" />
+
+                <EditText
+                    android:id="@+id/reg_textBox_cpwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TableLayout
+            android:id="@+id/reg_layout_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reg_layout_credidentials">
+
+            <TableRow
+                android:id="@+id/reg_row_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_lbl_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/reg_row_fname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_lbl_fname"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/full_name" />
+
+                <EditText
+                    android:id="@+id/reg_textBox_fname"
+                    android:layout_width="290dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/reg_row_age"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_lbl_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age" />
+
+                <EditText
+                    android:id="@+id/reg_textBox_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/reg_row_phoneNr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/reg_lbl_phoneNr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_number" />
+
+                <EditText
+                    android:id="@+id/reg_textBox_phoneNr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="phone" />
+            </TableRow>
+
+        </TableLayout>
+
+        <RadioGroup
+            android:id="@+id/reg_radioGroup_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reg_layout_data">
 
             <TextView
-                android:id="@+id/reg_lbl_fname"
+                android:id="@+id/reg_lbl_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/reg_radio_nope"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Full Name:" />
+                android:checked="true"
+                android:text="@string/nope" />
 
-            <EditText
-                android:id="@+id/reg_textBox_fname"
+            <RadioButton
+                android:id="@+id/reg_radio_male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
+                android:text="@string/male" />
 
-        <TableRow
-            android:id="@+id/reg_row_mail"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/reg_lbl_mail"
+            <RadioButton
+                android:id="@+id/reg_radio_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mail:" />
+                android:text="@string/female" />
 
-            <EditText
-                android:id="@+id/reg_textBox_mail"
+            <RadioButton
+                android:id="@+id/reg_radio_other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress" />
-        </TableRow>
+                android:text="@string/other" />
+        </RadioGroup>
 
-        <TableRow
-            android:id="@+id/reg_row_phoneNr"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+        <Button
+            android:id="@+id/reg_btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/register"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reg_radioGroup_gender" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/reg_lbl_phoneNr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone Number:" />
-
-            <EditText
-                android:id="@+id/reg_textBox_phoneNr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -26,7 +26,7 @@
                 android:id="@+id/login_lbl_mail"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:text="Mail:" />
+                android:text="@string/mail" />
 
             <EditText
                 android:id="@+id/login_textBox_mail"
@@ -45,7 +45,7 @@
                 android:id="@+id/login_lbl_pwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password:" />
+                android:text="@string/password" />
 
             <EditText
                 android:id="@+id/login_textBox_pwd"
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="No Account? Press here to register"
+        android:text="@string/newAccount"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Log In"
+        android:text="@string/log_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_layout_credidentials" />

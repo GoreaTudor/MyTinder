@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Client">
         <activity
+            android:name=".activities.activities.SelectActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.activities.RegisterActivity"
             android:exported="false" />
         <activity
