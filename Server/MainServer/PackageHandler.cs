@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Server.Data;
-using Server.MainServer;
-
-namespace Server.MainServer {
+namespace Server {
     class PackageHandler {
         /// SINGLETON
         private static PackageHandler instance = new PackageHandler();
@@ -20,13 +17,13 @@ namespace Server.MainServer {
         public String handlePackage(String package) {
             String[] arrayPackage = package.Split("#");
 
-            if (arrayPackage[0].StartsWith(Messages.sTestAdd)) {
+            if (arrayPackage[0].StartsWith(Messages.sTestAdd)) {                                        // c!test_add#
                 return TEST_Add();
 
-            } else if (arrayPackage[0].StartsWith(Messages.sTestGet)) {
+            } else if (arrayPackage[0].StartsWith(Messages.sTestGet)) {                                 // c!test_get#
                 return TEST_Get();
 
-            } else if (arrayPackage[0].StartsWith(Messages.sLoginReq) && arrayPackage.Length >= 3) {
+            } else if (arrayPackage[0].StartsWith(Messages.sLoginReq) && arrayPackage.Length >= 3) {    // c!login_req#mail#pwd#
                 return LoginReq(arrayPackage[1], arrayPackage[2]);
 
             }
@@ -36,8 +33,19 @@ namespace Server.MainServer {
 
 
         /// LOGIN ///
-        private String LoginReq(String username, String password) {
-            return null;
+        private String LoginReq(String mail, String password) {
+            try {
+                User user = DbHandler.instance.getUser(mail, int.Parse(password));
+
+                if (user == null) {
+                    return Messages.sLoginErr;
+                }
+
+                return Messages.sLoginOk + "#" + user.GetUserData();
+
+            } catch (Exception e) {
+                return Messages.sLoginErr;
+            }
         }
 
 

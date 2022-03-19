@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server.Data {
+namespace Server {
     enum Gender {
         nope, male, female, other
     }
@@ -22,6 +22,10 @@ namespace Server.Data {
             this.FullName = fname;
             this.Age = age;
             this.Gender = g;
+        }
+
+        public String GetUserData() {
+            return Mail + "," + Password + "," + FullName + "," + Age + "," + Gender; 
         }
     }
 }

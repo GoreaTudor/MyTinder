@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server.MainServer {
+namespace Server {
     class ClientDataStore {
         /// SINGLETON ///
         private static ClientDataStore _instance = new ClientDataStore();

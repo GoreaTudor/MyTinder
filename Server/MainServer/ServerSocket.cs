@@ -5,7 +5,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
-namespace Server.MainServer {
+namespace Server {
     class ServerSocket {
         private Socket _socket;
 

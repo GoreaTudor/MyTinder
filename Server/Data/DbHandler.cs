@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite; // Install-Package System.Data.Sqlite
 using System.Text;
 
-namespace Server.Data {
+namespace Server {
     class DbHandler {
         /// SINGLETON ///
         public static DbHandler instance { get { return _instance; } }
@@ -38,8 +38,33 @@ namespace Server.Data {
 
 
         /// Database Operations ///
-        public User getUser(String username, int password) {
-            return null;
+        public User getUser(String mail, int password) {
+            ConnectToDB();
+            User user = null;
+
+            if (isConnectionOpened()) {
+                String commandText = "SELECT * FROM users_table WHERE mail=@mail and pwd=@pwd;";
+                SQLiteCommand command = new SQLiteCommand(commandText, connection);
+
+                command.Parameters.Add("@mail", System.Data.DbType.String);
+                command.Parameters["@mail"].Value = mail;
+
+                command.Parameters.Add("@pwd", System.Data.DbType.Int32);
+                command.Parameters["@pwd"].Value = password;
+
+                SQLiteDataReader reader = command.ExecuteReader();
+                if (reader.Read()) {
+                    user = new User(
+                        reader.GetString(0),        // mail
+                        reader.GetInt32(1),         // password
+                        reader.GetString(2),        // full name
+                        reader.GetInt32(3),         // age
+                        (Gender)reader.GetInt32(4)  // gender
+                    );
+                }
+            }
+            DisconnectFromDB();
+            return user;
         }
 
 

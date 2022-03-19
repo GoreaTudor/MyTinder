@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Net.Sockets;
 
-namespace Server.MainServer {
+namespace Server {
     class ClientHandler {
         private Socket _socket = null;
         private int _idClient = -1;
@@ -76,7 +76,7 @@ namespace Server.MainServer {
         private void handleMessage(String message) {
             String[] arguments = message.Split("!");
 
-            if (arguments[0] == "s" && arguments.Length >= 2) {
+            if (arguments[0] == "c" && arguments.Length >= 2) {
                 String response = PackageHandler.Instance.handlePackage(arguments[1]);
                 sendResponse(response);
             }
@@ -84,7 +84,9 @@ namespace Server.MainServer {
         }
 
         private void sendResponse(String message) {
-            _socket.Send(Encoding.ASCII.GetBytes(message));
+            String response = "s!" + message + "!";
+            Console.WriteLine(response + "\n");
+            _socket.Send(Encoding.ASCII.GetBytes(response));
         }
     }
 }

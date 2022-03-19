@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace Server_v1 {
+namespace Server {
     class Program {
         private static bool _exitKeyPressed = false;
         private static int _port = 8000;
