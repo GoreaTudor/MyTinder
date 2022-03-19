@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server_v1 {
+namespace Server.MainServer {
     class Messages {
         public static String sTestAdd = "test_add"; // expect test_add#
         public static String sTestGet = "test_get"; // expect test_get#

@@ -38,6 +38,9 @@ namespace Server.Data {
 
 
         /// Database Operations ///
+        public User getUser(String username, int password) {
+            return null;
+        }
 
 
         /// TESTS ///
