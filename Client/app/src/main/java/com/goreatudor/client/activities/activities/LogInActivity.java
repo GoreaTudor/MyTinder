@@ -19,6 +19,8 @@ public class LogInActivity extends AppCompatActivity {
     TextView lbl_reg;
     Button btn_login;
 
+    Button demo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,13 @@ public class LogInActivity extends AppCompatActivity {
 
         lbl_reg.setOnClickListener(view -> {
             Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
+
+
+        demo = findViewById(R.id.DEMO1);
+        demo.setOnClickListener(view -> {
+            Intent intent = new Intent(this, SelectActivity.class);
             startActivity(intent);
         });
     }

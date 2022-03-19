@@ -16,4 +16,7 @@
     <string name="register">Register</string>
     <string name="newAccount">No Account? Press here to register</string>
     <string name="log_in">Log In</string>
+    <string name="search">Search</string>
+    <string name="age_between">Age between:</string>
+    <string name="search_for">Search for:</string>
 </resources>
