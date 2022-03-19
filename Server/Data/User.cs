@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server {
+namespace Server.Data {
     enum Gender {
         nope, male, female, other
     }

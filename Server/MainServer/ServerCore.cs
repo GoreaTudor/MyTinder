@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Net.Sockets;
 
-namespace Server {
+namespace Server.MainServer {
     class ServerCore : ServerSocket {
         private Thread _thread = null;
         private bool _shouldRun = true;

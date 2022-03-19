@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Net.Sockets;
 
-namespace Server {
+namespace Server.MainServer {
     class ClientHandler {
         private Socket _socket = null;
         private int _idClient = -1;
@@ -84,7 +84,7 @@ namespace Server {
         }
 
         private void sendResponse(String message) {
-            String response = "s!" + message + "!";
+            String response = "s!" + message + "#";
             Console.WriteLine(response + "\n");
             _socket.Send(Encoding.ASCII.GetBytes(response));
         }

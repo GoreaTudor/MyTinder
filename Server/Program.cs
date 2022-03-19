@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
 
+using Server.MainServer;
+
 namespace Server {
     class Program {
         private static bool _exitKeyPressed = false;

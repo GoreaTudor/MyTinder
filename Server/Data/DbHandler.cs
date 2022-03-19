@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SQLite; // Install-Package System.Data.Sqlite
 using System.Text;
 
-namespace Server {
+namespace Server.Data {
     class DbHandler {
         /// SINGLETON ///
         public static DbHandler instance { get { return _instance; } }

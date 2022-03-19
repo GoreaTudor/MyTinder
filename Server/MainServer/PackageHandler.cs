@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server {
+using Server.Data;
+
+namespace Server.MainServer {
     class PackageHandler {
         /// SINGLETON
         private static PackageHandler instance = new PackageHandler();
         private PackageHandler() { }
         public static PackageHandler Instance { get { return instance; } }
 
+
         /// <summary>
-        /// Splits the package and analizes the arguments
+        /// Splits the package into arguments and does operation based on those arguments
         /// </summary>
-        /// <param name="package"></param>
+        /// <param name="package">the package that will be split into argumets</param>
         /// <returns>a response message</returns>
         public String handlePackage(String package) {
             String[] arrayPackage = package.Split("#");

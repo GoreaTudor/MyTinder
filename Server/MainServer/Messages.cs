@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server {
+namespace Server.MainServer {
     class Messages {
         public static readonly String sTestAdd = "test_add";
         public static readonly String sTestGet = "test_get";
