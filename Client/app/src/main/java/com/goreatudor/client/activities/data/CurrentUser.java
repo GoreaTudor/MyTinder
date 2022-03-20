@@ -31,6 +31,17 @@ public class CurrentUser {
         }
     }
 
+    @Override
+    public String toString() {
+        return "CurrentUser{" +
+                "mail='" + mail + '\'' +
+                ", password=" + password +
+                ", fullName='" + fullName + '\'' +
+                ", age=" + age +
+                ", gender=" + gender +
+                '}';
+    }
+
     public String getMail() {
         return mail;
     }

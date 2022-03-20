@@ -67,6 +67,32 @@ namespace Server.Data {
             return user;
         }
 
+        public void insertUser(User user) {
+            ConnectToDB();
+            if (isConnectionOpened()) {
+                String commandText = "INSERT INTO users_table VALUES(@mail, @pwd, @fname, @age, @gender);";
+                SQLiteCommand command = new SQLiteCommand(commandText, connection);
+
+                command.Parameters.Add("@mail", System.Data.DbType.String);
+                command.Parameters["@mail"].Value = user.Mail;
+
+                command.Parameters.Add("@pwd", System.Data.DbType.Int32);
+                command.Parameters["@pwd"].Value = user.Password;
+
+                command.Parameters.Add("@fname", System.Data.DbType.String);
+                command.Parameters["@fname"].Value = user.FullName;
+
+                command.Parameters.Add("@age", System.Data.DbType.Int32);
+                command.Parameters["@age"].Value = user.Age;
+
+                command.Parameters.Add("@gender", System.Data.DbType.Int32);
+                command.Parameters["@gender"].Value = user.Gender;
+
+                command.ExecuteNonQuery();
+            }
+            DisconnectFromDB();
+        }
+
 
         /// TESTS ///
         public void TEST_Add() {

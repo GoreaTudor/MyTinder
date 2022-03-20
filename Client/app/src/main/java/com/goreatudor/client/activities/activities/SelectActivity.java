@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.goreatudor.client.R;
+import com.goreatudor.client.activities.data.CurrentUser;
 
 public class SelectActivity extends AppCompatActivity {
 
@@ -23,6 +25,8 @@ public class SelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
+
+        Toast.makeText(this, CurrentUser.getInstance().toString(), Toast.LENGTH_LONG).show();
 
         seekBar_ageMin = findViewById(R.id.sel_seekBar_ageMin);
         seekBar_ageMax = findViewById(R.id.sel_seekBar_ageMax);

@@ -29,6 +29,8 @@ namespace Server.MainServer {
             } else if (arrayPackage[0].StartsWith(Messages.sLoginReq) && arrayPackage.Length >= 3) {    // c!login_req#mail#pwd#
                 return LoginReq(arrayPackage[1], arrayPackage[2]);
 
+            } else if (arrayPackage[0].StartsWith(Messages.sRegReq) && arrayPackage.Length >= 2) {      // c!reg_req#mail,pwd,fullname,age,gender#
+                return RegReq(arrayPackage[1]);
             }
 
             return "";
@@ -53,7 +55,29 @@ namespace Server.MainServer {
 
 
         /// REGISTER ///
+        private String RegReq(String package) {
+            String[] userData = package.Split(",");
 
+            if (userData.Length < 5) {
+                return Messages.sRegErr;
+            }
+
+            User user = new User(
+                userData[0],                    // mail
+                int.Parse(userData[1]),         // password
+                userData[2],                    // full name
+                int.Parse(userData[3]),         // age
+                (Gender)int.Parse(userData[4])  // gender
+            );
+
+            try {
+                DbHandler.instance.insertUser(user);
+                return Messages.sRegOk;
+
+            } catch (Exception e) {
+                return Messages.sRegErr;
+            }
+        }
         
 
         /// TESTS ///
