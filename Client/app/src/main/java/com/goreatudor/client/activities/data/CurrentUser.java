@@ -1,17 +1,10 @@
 package com.goreatudor.client.activities.data;
 
-public class CurrentUser {
+public class CurrentUser extends User {
     /// SINGLETON ///
     private static CurrentUser instance = new CurrentUser();
-    private CurrentUser() {}
+    private CurrentUser() {super("", 0, "", 0, "");}
     public static CurrentUser getInstance() { return instance; }
-
-    /// DATA ///
-    private String mail;
-    private int password;
-    private String fullName;
-    private int age;
-    private Gender gender;
 
     /// ACTIONS ///
     public void isNow(String mail, int pwd, String fullName, int age, String gender) {
@@ -40,25 +33,5 @@ public class CurrentUser {
                 ", age=" + age +
                 ", gender=" + gender +
                 '}';
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public int getPassword() {
-        return password;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public Gender getGender() {
-        return gender;
     }
 }

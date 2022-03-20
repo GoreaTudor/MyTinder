@@ -157,25 +157,6 @@
                     android:inputType="number" />
             </TableRow>
 
-            <TableRow
-                android:id="@+id/reg_row_phoneNr"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/reg_lbl_phoneNr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/phone_number" />
-
-                <EditText
-                    android:id="@+id/reg_textBox_phoneNr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="phone" />
-            </TableRow>
-
         </TableLayout>
 
         <RadioGroup
