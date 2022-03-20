@@ -7,8 +7,10 @@ public interface Messages {
     String sMessageError = "message_err";
 
     String sLoginReq = "login_req";
-    String sLoginOk = "login_ok";
+    String sLoginOk  = "login_ok";
     String sLoginErr = "login_err";
 
-    String sRegNew = "reg_new";
+    String sRegReq = "reg_req";
+    String sRegOk  = "reg_ok";
+    String sRegErr = "reg_err";
 }

@@ -55,11 +55,11 @@ namespace Server.Data {
                 SQLiteDataReader reader = command.ExecuteReader();
                 if (reader.Read()) {
                     user = new User(
-                        reader.GetString(0),        // mail
-                        reader.GetInt32(1),         // password
-                        reader.GetString(2),        // full name
-                        reader.GetInt32(3),         // age
-                        (Gender)reader.GetInt32(4)  // gender
+                        reader.GetString(0),    // mail
+                        reader.GetInt32(1),     // password
+                        reader.GetString(2),    // full name
+                        reader.GetInt32(3),     // age
+                        reader.GetInt32(4)      // gender
                     );
                 }
             }

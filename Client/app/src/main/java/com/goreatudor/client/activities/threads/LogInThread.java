@@ -43,8 +43,8 @@ public class LogInThread extends Thread {
         try {
             Socket socket = new Socket(ip, port);
 
-            //String message = Messages.sLoginReq + "#" + mail + "#" + pwd;
-            String message = Messages.sLoginReq + "#" + "dummy1@gmail.com" + "#" + "1111";
+            String message = Messages.sLoginReq + "#" + mail + "#" + pwd;
+            //String message = Messages.sLoginReq + "#" + "dummy1@gmail.com" + "#" + "1111";
             Helper.sendMessage(socket, message);
 
             Thread.sleep(1000);
@@ -67,8 +67,11 @@ public class LogInThread extends Thread {
                 /// CALLBACK ///
                 callback.exec();
 
-            } else {
+            } else if (args[1].equals(Messages.sLoginErr)) {
                 Toast.makeText(context, "Account not found", Toast.LENGTH_SHORT).show();
+
+            } else{
+                Toast.makeText(context, "Login error", Toast.LENGTH_SHORT).show();
             }
 
         } catch (IOException | InterruptedException e) {

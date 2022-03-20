@@ -63,11 +63,11 @@ namespace Server.MainServer {
             }
 
             User user = new User(
-                userData[0],                    // mail
-                int.Parse(userData[1]),         // password
-                userData[2],                    // full name
-                int.Parse(userData[3]),         // age
-                (Gender)int.Parse(userData[4])  // gender
+                userData[0],                // mail
+                int.Parse(userData[1]),     // password
+                userData[2],                // full name
+                int.Parse(userData[3]),     // age
+                userData[4]                 // gender
             );
 
             try {

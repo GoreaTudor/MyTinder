@@ -13,6 +13,7 @@ import com.goreatudor.client.R;
 import com.goreatudor.client.activities.data.Gender;
 import com.goreatudor.client.activities.data.User;
 import com.goreatudor.client.activities.helper.DataChecker;
+import com.goreatudor.client.activities.threads.RegistrationThread;
 
 import java.util.Arrays;
 
@@ -94,6 +95,10 @@ public class RegisterActivity extends AppCompatActivity {
                 User user = new User(mail, pwd_i, fullName, age_i, gender);
                 Toast.makeText(RegisterActivity.this, "Processing...", Toast.LENGTH_SHORT).show();
                 Log.d("New Account", "User{" + user.toString() + "}");
+
+                new RegistrationThread(user, RegisterActivity.this, () -> {
+                    //Toast.makeText(RegisterActivity.this, "ok", Toast.LENGTH_SHORT).show();
+                }).start();
             }
         });
     }
