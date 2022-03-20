@@ -96,9 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "Processing...", Toast.LENGTH_SHORT).show();
                 Log.d("New Account", "User{" + user.toString() + "}");
 
-                new RegistrationThread(user, RegisterActivity.this, () -> {
-                    //Toast.makeText(RegisterActivity.this, "ok", Toast.LENGTH_SHORT).show();
-                }).start();
+                new RegistrationThread(user, RegisterActivity.this).start();
             }
         });
     }

@@ -11,22 +11,19 @@ import com.goreatudor.client.activities.helper.Messages;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class RegistrationThread extends Thread {
 
     private Context context;
-    private Action callback;
 
     private String ip;
     private int port;
 
     private User user;
 
-    public RegistrationThread(User user, Context context, Action callback) {
+    public RegistrationThread(User user, Context context) {
         this.user = user;
         this.context = context;
-        this.callback = callback;
 
         this.ip = Helper.getIP(context);
         this.port = Helper.getPort(context);
