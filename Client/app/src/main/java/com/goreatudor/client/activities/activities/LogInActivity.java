@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.goreatudor.client.R;
+import com.goreatudor.client.activities.threads.LogInThread;
 
 import java.util.Arrays;
 
@@ -32,10 +33,13 @@ public class LogInActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.login_btn_login);
 
         btn_login.setOnClickListener(view -> {
-            String mail = txt_mail.getText().toString();
-            int pwd = Arrays.hashCode(txt_pwd.getText().toString().toCharArray());
+            //String mail = txt_mail.getText().toString();
+            //int pwd = Arrays.hashCode(txt_pwd.getText().toString().toCharArray());
 
             //TODO: send login request to server
+            new LogInThread(this, () -> {
+                ;
+            }).start();
         });
 
         lbl_reg.setOnClickListener(view -> {
