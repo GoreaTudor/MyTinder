@@ -33,12 +33,13 @@ public class LogInActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.login_btn_login);
 
         btn_login.setOnClickListener(view -> {
-            //String mail = txt_mail.getText().toString();
-            //int pwd = Arrays.hashCode(txt_pwd.getText().toString().toCharArray());
+            String mail = txt_mail.getText().toString();
+            int pwd = Arrays.hashCode(txt_pwd.getText().toString().toCharArray());
 
             //TODO: send login request to server
-            new LogInThread(this, () -> {
-                ;
+            new LogInThread(mail, pwd, this, () -> {
+                Intent intent = new Intent(LogInActivity.this, SelectActivity.class);
+                startActivity(intent);
             }).start();
         });
 

@@ -34,4 +34,19 @@ public class Helper {
         String pack = "c!" + message + "#";
         writer.println(pack);
     }
+
+    public static String getMessage (Socket socket) throws IOException {
+        BufferedReader reader = getReader(socket);
+        char[] rawPack = new char[100];
+
+        reader.read(rawPack);
+        String pack = String.valueOf(rawPack);
+
+        String[] arrayMessage = pack.split("!");
+        if (arrayMessage.length >= 2) {
+            return arrayMessage[1];
+        } else {
+            return Messages.sMessageError;
+        }
+    }
 }
