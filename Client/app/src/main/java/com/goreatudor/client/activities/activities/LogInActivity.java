@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -35,9 +36,10 @@ public class LogInActivity extends AppCompatActivity {
         btn_login.setOnClickListener(view -> {
             String mail = txt_mail.getText().toString();
             int pwd = Arrays.hashCode(txt_pwd.getText().toString().toCharArray());
+            Handler handler = new Handler();
 
             //TODO: send login request to server
-            new LogInThread(mail, pwd, this, () -> {
+            new LogInThread(mail, pwd, this, handler, () -> {
                 Intent intent = new Intent(LogInActivity.this, SelectActivity.class);
                 startActivity(intent);
             }).start();

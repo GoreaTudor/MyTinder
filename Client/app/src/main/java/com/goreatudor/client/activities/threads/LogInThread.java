@@ -1,6 +1,7 @@
 package com.goreatudor.client.activities.threads;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class LogInThread extends Thread {
 
     private Context context;
     private Action callback;
+    private Handler handler;
 
     private String ip;
     private int port;
@@ -27,11 +29,12 @@ public class LogInThread extends Thread {
     private String mail;
     private int pwd;
 
-    public LogInThread (String mail, int pwd, Context context, Action callback) {
+    public LogInThread (String mail, int pwd, Context context, Handler handler, Action callback) {
         this.mail = mail;
         this.pwd = pwd;
         this.context = context;
         this.callback = callback;
+        this.handler = handler;
 
         this.ip = Helper.getIP(context);
         this.port = Helper.getPort(context);
@@ -68,10 +71,14 @@ public class LogInThread extends Thread {
                 callback.exec();
 
             } else if (args[1].equals(Messages.sLoginErr)) {
-                Toast.makeText(context, "Account not found", Toast.LENGTH_SHORT).show();
+                handler.post(() -> {
+                    Toast.makeText(context, "Account not found", Toast.LENGTH_SHORT).show();
+                });
 
             } else{
-                Toast.makeText(context, "Login error", Toast.LENGTH_SHORT).show();
+                handler.post(() -> {
+                    Toast.makeText(context, "Login error", Toast.LENGTH_SHORT).show();
+                });
             }
 
         } catch (IOException | InterruptedException e) {

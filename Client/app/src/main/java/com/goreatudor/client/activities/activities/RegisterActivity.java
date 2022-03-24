@@ -3,6 +3,7 @@ package com.goreatudor.client.activities.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -96,7 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, "Processing...", Toast.LENGTH_SHORT).show();
                 Log.d("New Account", "User{" + user.toString() + "}");
 
-                new RegistrationThread(user, RegisterActivity.this).start();
+                Handler handler = new Handler();
+
+                new RegistrationThread(user, handler, RegisterActivity.this).start();
             }
         });
     }
