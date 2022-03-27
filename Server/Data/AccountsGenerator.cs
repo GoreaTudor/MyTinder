@@ -3,7 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Server.Data {
+    /// <summary>
+    /// A helper class that generates accounts to be added to the database. 
+    /// The class does not add those accounts to the database by itself.
+    /// The generated data is random.
+    /// </summary>
     class AccountsGenerator {
+
+        /// <summary>Generates a list of random users with random data</summary>
+        /// <param name="nrOfUsers">the number of users to be created</param>
+        /// <returns>a list of users</returns>
         public static List<User> generate(int nrOfUsers) {
             Random rnd = new Random();
             List<User> users = new List<User>();

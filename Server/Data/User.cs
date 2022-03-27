@@ -7,6 +7,9 @@ namespace Server.Data {
         nope, male, female, other
     }
 
+    /// <summary>
+    /// A model class that represents the User model in the database
+    /// </summary>
     class User {
         public String Mail { get; set; }
         public int Password { get; set; }
@@ -50,6 +53,8 @@ namespace Server.Data {
             }
         }
 
+        /// <summary>Method that returns all user data</summary>
+        /// <returns>a string with format: 'mail,pwd,fullName,age,gender'</returns>
         public String GetUserData() {
             return Mail + "," + Password + "," + FullName + "," + Age + "," + Gender; 
         }

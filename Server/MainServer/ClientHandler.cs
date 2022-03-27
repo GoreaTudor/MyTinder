@@ -73,6 +73,8 @@ namespace Server.MainServer {
         }
 
 
+        /// <summary>Splits the message by '!' and passes it's data to PackageHandler</summary>
+        /// <param name="message">the whole package that is received from the socket</param>
         private void handleMessage(String message) {
             String[] arguments = message.Split("!");
 
@@ -83,6 +85,9 @@ namespace Server.MainServer {
 
         }
 
+
+        /// <summary>Sends a response to the client through the socket</summary>
+        /// <param name="message">the response message</param>
         private void sendResponse(String message) {
             String response = "s!" + message + "#";
             Console.WriteLine(response + "\n");

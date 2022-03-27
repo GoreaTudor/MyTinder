@@ -4,6 +4,9 @@ using System.Data.SQLite; // Install-Package System.Data.Sqlite
 using System.Text;
 
 namespace Server.Data {
+    /// <summary>
+    /// A singleton class that connects, gets and modifies the data of a database
+    /// </summary>
     class DbHandler {
         /// SINGLETON ///
         public static DbHandler instance { get { return _instance; } }
