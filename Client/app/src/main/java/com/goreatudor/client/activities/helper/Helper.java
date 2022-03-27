@@ -13,9 +13,9 @@ import java.net.Socket;
 
 public class Helper {
     public static String getIP(Context context) {
-        //return context.getResources().getString(R.string.ip_home);
+        return context.getResources().getString(R.string.ip_home);
         //return context.getResources().getString(R.string.ip_univ_l11);
-        return context.getResources().getString(R.string.ip_univ_l31);
+        //return context.getResources().getString(R.string.ip_univ_l31);
     }
 
     public static int getPort(Context context) {

@@ -3,6 +3,7 @@ package com.goreatudor.client.activities.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -80,7 +81,8 @@ public class SelectActivity extends AppCompatActivity {
         });
 
         btn_search.setOnClickListener(view -> {
-            ;
+            Intent intent = new Intent(SelectActivity.this, MainActivity.class);
+            startActivity(intent);
         });
     }
 }
