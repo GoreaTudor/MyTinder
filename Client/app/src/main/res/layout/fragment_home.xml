@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".activities.activities.fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.lorentzos.flingswipe.SwipeFlingAdapterView
+        android:id="@+id/home_swipeCards"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="HOME" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragment_home = new HomeFragment();
+        fragment_home = new HomeFragment(this);
         fragment_matches = new MatchesFragment();
         fragment_profile = new ProfileFragment();
 

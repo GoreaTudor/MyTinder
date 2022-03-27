@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/color_nope"
+    android:layout_gravity="center">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/swipe_txt_fname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/full_name"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/swipe_txt_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/gender"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/swipe_txt_fname"
+            app:layout_constraintTop_toBottomOf="@+id/swipe_txt_fname" />
+
+        <TextView
+            android:id="@+id/swipe_lbl_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/age"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/swipe_txt_gender"
+            app:layout_constraintTop_toBottomOf="@+id/swipe_txt_gender" />
+
+        <TextView
+            android:id="@+id/swipe_txt_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="18"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/swipe_lbl_age"
+            app:layout_constraintStart_toEndOf="@+id/swipe_lbl_age"
+            app:layout_constraintTop_toTopOf="@+id/swipe_lbl_age" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
