@@ -93,6 +93,21 @@ namespace Server.Data {
             DisconnectFromDB();
         }
 
+        public int insertMultipleUsers(List<User> users) {
+            int count = 0;
+            foreach (User user in users) {
+                try {
+                    insertUser(user);
+                    count++;
+
+                } catch (Exception e) {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            return count;
+        }
+
 
         /// TESTS ///
         public void TEST_Add() {

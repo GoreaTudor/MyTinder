@@ -26,6 +26,9 @@ namespace Server.MainServer {
             } else if (arrayPackage[0].StartsWith(Messages.sTestGet)) {                                 // c!test_get#
                 return TEST_Get();
 
+            } else if (arrayPackage[0].StartsWith(Messages.sTablePop)) {                                // c!table_populate#
+                return Table_Populate();
+
             } else if (arrayPackage[0].StartsWith(Messages.sLoginReq) && arrayPackage.Length >= 3) {    // c!login_req#mail#pwd#
                 return LoginReq(arrayPackage[1], arrayPackage[2]);
 
@@ -78,6 +81,13 @@ namespace Server.MainServer {
                 return Messages.sRegErr;
             }
         }
+
+
+        /// TABLE ///
+        private String Table_Populate () {
+            int count = DbHandler.instance.insertMultipleUsers(AccountsGenerator.generate(50));
+            return "Added " + count + " rows";
+        }
         
 
         /// TESTS ///
@@ -86,7 +96,7 @@ namespace Server.MainServer {
             return "Response example ADD";
         }
 
-        private String TEST_Get() {
+        private String TEST_Get () {
             DbHandler.instance.TEST_Get();
             return "Response example GET";
         }
