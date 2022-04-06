@@ -58,5 +58,11 @@ namespace Server.Data {
         public String GetUserData() {
             return Mail + "," + Password + "," + FullName + "," + Age + "," + Gender; 
         }
+
+        /// <summary>Method that returns some user data that is used for swipe cards feature</summary>
+        /// <returns>a string with format: 'mail,fullName,age,gender'</returns>
+        public String GetSomeUserData() {
+            return Mail + "," + FullName + "," + Age + "," + Gender;
+        }
     }
 }

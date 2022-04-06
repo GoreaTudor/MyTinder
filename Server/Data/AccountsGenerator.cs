@@ -17,19 +17,22 @@ namespace Server.Data {
             Random rnd = new Random();
             List<User> users = new List<User>();
 
-            int gender, age, temp;
+            int gender_rnd, gender, age, temp;
             String fn, ln, mail, pwd;
             String[] fn_array;
 
             for (int i = 1; i <= nrOfUsers; i++) {
 
-                gender = rnd.Next(1, 6);
-                if (gender == 1 || gender == 2) {          // male 
+                gender_rnd = rnd.Next(1, 6);
+                if (gender_rnd == 1 || gender_rnd == 2) {          // male 
                     fn_array = fn_male;
-                } else if (gender == 3 || gender == 4) {   // female
+                    gender = 1;
+                } else if (gender_rnd == 3 || gender_rnd == 4) {   // female
                     fn_array = fn_female;
+                    gender = 2;
                 } else {                                    // other
                     fn_array = fn_other;
+                    gender = 3;
                 }
 
                 temp = rnd.Next(0, 5);  // hide gender (20%)

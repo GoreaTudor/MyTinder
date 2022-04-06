@@ -111,6 +111,44 @@ namespace Server.Data {
             return count;
         }
 
+        public List<User> GetUsers(int ageMin, int ageMax, bool sMale, bool sFemale, bool sOther) {
+            ConnectToDB();
+            List<User> users = null;
+
+            if (isConnectionOpened()) {
+                users = new List<User>();
+                StringBuilder commandText = new StringBuilder();
+                commandText.Append("SELECT * FROM users_table WHERE age >= @ageMin AND age <= @ageMax AND ( gender = 0");
+
+                if (sMale) { commandText.Append(" OR gender = 1"); }
+                else if (sFemale) { commandText.Append(" OR gender = 2"); }
+                else if (sOther) { commandText.Append(" OR gender = 3"); }
+
+                commandText.Append(" );");
+
+                SQLiteCommand command = new SQLiteCommand(commandText.ToString(), connection);
+
+                command.Parameters.Add("@ageMin", System.Data.DbType.Int32);
+                command.Parameters["@ageMin"].Value = ageMin;
+
+                command.Parameters.Add("@ageMax", System.Data.DbType.Int32);
+                command.Parameters["@ageMax"].Value = ageMax;
+
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read()) {
+                    users.Add(new User(
+                        reader.GetString(0),    // mail
+                        0,                      // pwd
+                        reader.GetString(2),    // full name
+                        reader.GetInt32(3),     // age
+                        reader.GetInt32(4)      // gender
+                    ));
+                }
+            }
+            DisconnectFromDB();
+            return users;
+        }
+
 
         /// TESTS ///
         public void TEST_Add() {
