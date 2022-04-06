@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.goreatudor.client.R;
 import com.goreatudor.client.activities.data.CurrentUser;
+import com.goreatudor.client.activities.threads.SelectThread;
 
 public class SelectActivity extends AppCompatActivity {
 
@@ -19,6 +23,9 @@ public class SelectActivity extends AppCompatActivity {
     SeekBar seekBar_ageMax;
     TextView lbl_ageMin;
     TextView lbl_ageMax;
+    Switch switch_male;
+    Switch switch_female;
+    Switch switch_other;
     Button btn_search;
 
     @SuppressLint("NewApi")
@@ -33,6 +40,9 @@ public class SelectActivity extends AppCompatActivity {
         seekBar_ageMax = findViewById(R.id.sel_seekBar_ageMax);
         lbl_ageMin = findViewById(R.id.sel_lbl_ageMin);
         lbl_ageMax = findViewById(R.id.sel_lbl_ageMax);
+        switch_male = findViewById(R.id.sel_switch_men);
+        switch_female = findViewById(R.id.sel_switch_women);
+        switch_other = findViewById(R.id.sel_switch_other);
         btn_search = findViewById(R.id.sel_btn_search);
 
         seekBar_ageMin.setMin(18);
@@ -81,8 +91,17 @@ public class SelectActivity extends AppCompatActivity {
         });
 
         btn_search.setOnClickListener(view -> {
-            Intent intent = new Intent(SelectActivity.this, MainActivity.class);
-            startActivity(intent);
+            int ageMin = seekBar_ageMin.getProgress();
+            int ageMax = seekBar_ageMax.getProgress();
+            boolean sMale = switch_male.isChecked();
+            boolean sFemale = switch_female.isChecked();
+            boolean sOther = switch_other.isChecked();
+            Handler handler = new Handler();
+
+            new SelectThread(ageMin, ageMax, sMale, sFemale, sOther, this, handler, () -> {
+                Intent intent = new Intent(SelectActivity.this, MainActivity.class);
+                startActivity(intent);
+            }).start();
         });
     }
 }

@@ -38,7 +38,6 @@ public class LogInActivity extends AppCompatActivity {
             int pwd = Arrays.hashCode(txt_pwd.getText().toString().toCharArray());
             Handler handler = new Handler();
 
-            //TODO: send login request to server
             new LogInThread(mail, pwd, this, handler, () -> {
                 Intent intent = new Intent(LogInActivity.this, SelectActivity.class);
                 startActivity(intent);

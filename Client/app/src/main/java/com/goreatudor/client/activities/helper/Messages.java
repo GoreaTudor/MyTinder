@@ -13,4 +13,6 @@ public interface Messages {
     String sRegReq = "reg_req";
     String sRegOk  = "reg_ok";
     String sRegErr = "reg_err";
+
+    String sGetPeople = "getP_req";
 }

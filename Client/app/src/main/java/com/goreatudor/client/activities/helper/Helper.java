@@ -31,6 +31,7 @@ public class Helper {
     }
 
     public static void sendMessage (Socket socket, String message) throws IOException {
+        Log.d("REQUEST", message);
         PrintWriter writer = getWriter(socket);
         String pack = "c!" + message + "#";
         writer.println(pack);
