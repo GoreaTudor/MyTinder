@@ -121,8 +121,8 @@ namespace Server.Data {
                 commandText.Append("SELECT * FROM users_table WHERE age >= @ageMin AND age <= @ageMax AND ( gender = 0");
 
                 if (sMale) { commandText.Append(" OR gender = 1"); }
-                else if (sFemale) { commandText.Append(" OR gender = 2"); }
-                else if (sOther) { commandText.Append(" OR gender = 3"); }
+                if (sFemale) { commandText.Append(" OR gender = 2"); }
+                if (sOther) { commandText.Append(" OR gender = 3"); }
 
                 commandText.Append(" );");
 

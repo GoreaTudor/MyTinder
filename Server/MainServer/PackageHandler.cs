@@ -104,7 +104,7 @@ namespace Server.MainServer {
         /// <returns>
         /// 'getP_inv' if the data is invalid,
         /// 'getP_err' if there was an error,
-        /// 'getP_ok' -- still on work
+        /// 'getP_ok' and a long string containing data for users, users are split by '$' and the data is aplit by ','
         /// </returns>
         private String GetPeople (String ageMin_s, String ageMax_s, String sMale_s, String sFemale_s, String sOther_s) {
             try {
@@ -121,9 +121,15 @@ namespace Server.MainServer {
                 List<User> users = DbHandler.instance.GetUsers(ageMin, ageMax, sMale, sFemale, sOther);
 
                 StringBuilder message = new StringBuilder();
-                foreach(User user in users) {
+                int l = 0;
+
+                foreach (User user in users) {
                     message.Append(user.GetSomeUserData());
-                    message.Append("$");
+                    l++;
+                    
+                    if (l < users.Count) {
+                        message.Append("$");
+                    }
                 }
 
                 return Messages.sGetPOk + "#" + message;
