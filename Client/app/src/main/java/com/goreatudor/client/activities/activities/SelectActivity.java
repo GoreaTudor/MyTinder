@@ -15,7 +15,12 @@ import android.widget.Toast;
 
 import com.goreatudor.client.R;
 import com.goreatudor.client.activities.data.CurrentUser;
+import com.goreatudor.client.activities.data.User;
+import com.goreatudor.client.activities.helper.GLOBAL;
 import com.goreatudor.client.activities.threads.SelectThread;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 public class SelectActivity extends AppCompatActivity {
 
@@ -97,11 +102,15 @@ public class SelectActivity extends AppCompatActivity {
             boolean sFemale = switch_female.isChecked();
             boolean sOther = switch_other.isChecked();
             Handler handler = new Handler();
+            ArrayList <User> usersList = new ArrayList<>();
 
-            new SelectThread(ageMin, ageMax, sMale, sFemale, sOther, this, handler, () -> {
+            new SelectThread(ageMin, ageMax, sMale, sFemale, sOther, usersList, this, handler, () -> {
                 Intent intent = new Intent(SelectActivity.this, MainActivity.class);
+                GLOBAL.usersList = usersList;
                 startActivity(intent);
             }).start();
+
+            Toast.makeText(SelectActivity.this, "Processing...", Toast.LENGTH_SHORT).show();
         });
     }
 }

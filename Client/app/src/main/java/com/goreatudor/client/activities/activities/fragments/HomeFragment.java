@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.goreatudor.client.R;
 import com.goreatudor.client.activities.data.User;
+import com.goreatudor.client.activities.helper.GLOBAL;
 import com.goreatudor.client.activities.helper.MyItemAdapter;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
@@ -33,11 +34,7 @@ public class HomeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        list = new ArrayList<>();
-        list.add(new User("aaaa@gmail.com", 1111, "AAA aaa", 19, "male"));
-        list.add(new User("bbbb@gmail.com", 2222, "BBB bbb", 21, "female"));
-        list.add(new User("cccc@gmail.com", 3333, "CCC ccc", 34, "other"));
-        list.add(new User("dddd@gmail.com", 4444, "DDD ddd", 29, "nope"));
+        list = (ArrayList<User>) GLOBAL.usersList.clone();
 
         adapter = new MyItemAdapter(context, R.layout.swipe_item, list);
     }

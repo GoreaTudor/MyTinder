@@ -43,7 +43,6 @@ public class RegistrationThread extends Thread {
             Thread.sleep(1000);
 
             String response = Helper.getMessage(socket);
-            Log.d("RESPONSE", response);
 
             String[] args = response.split("#");
             if (args[0].equals(Messages.sRegOk)) {

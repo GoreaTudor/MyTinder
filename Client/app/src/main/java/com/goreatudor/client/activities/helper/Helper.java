@@ -39,16 +39,21 @@ public class Helper {
 
     public static String getMessage (Socket socket) throws IOException {
         BufferedReader reader = getReader(socket);
-        char[] rawPack = new char[100];
+        char[] rawPack = new char[1024];
 
         reader.read(rawPack);
         String pack = String.valueOf(rawPack);
 
         String[] arrayMessage = pack.split("!");
-        if (arrayMessage.length >= 2) {
-            return arrayMessage[1];
+        String response;
+
+        if (arrayMessage[0].equals("s") && arrayMessage.length >= 2) {
+            response = arrayMessage[1];
         } else {
-            return Messages.sMessageError;
+            response = Messages.sMessageError;
         }
+
+        Log.d("RESPONSE", response);
+        return response;
     }
 }

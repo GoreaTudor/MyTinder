@@ -25,10 +25,10 @@ public class User {
         }
     }
 
-    @Override
-    public String toString() {
+    public String getUserData() {
         return mail + "," + password + "," + fullName + "," + age + "," + gender;
     }
+
 
     public String getMail() {
         return mail;

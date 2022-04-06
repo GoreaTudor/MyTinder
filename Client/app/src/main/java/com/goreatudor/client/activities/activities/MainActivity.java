@@ -13,6 +13,10 @@ import com.goreatudor.client.R;
 import com.goreatudor.client.activities.activities.fragments.HomeFragment;
 import com.goreatudor.client.activities.activities.fragments.MatchesFragment;
 import com.goreatudor.client.activities.activities.fragments.ProfileFragment;
+import com.goreatudor.client.activities.data.User;
+import com.goreatudor.client.activities.helper.GLOBAL;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
