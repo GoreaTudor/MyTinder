@@ -18,7 +18,7 @@ namespace Server.MainServer {
         /// <summary>Splits the package into arguments and does operation based on those arguments</summary>
         /// <param name="package">the package that will be split into argumets</param>
         /// <returns>a response message to the operation</returns>
-        public String handlePackage(String package) {
+        public String handlePackage (String package) {
             String[] arrayPackage = package.Split("#");
 
             if (arrayPackage[0].StartsWith(Messages.sTestAdd)) {                                        // c!test_add#
@@ -38,6 +38,10 @@ namespace Server.MainServer {
 
             } else if (arrayPackage[0].StartsWith(Messages.sGetPReq) && arrayPackage.Length >= 6) {      // c!getP_req#ageMin#ageMax#sMale#sFemale#sOther#
                 return GetPeople(arrayPackage[1], arrayPackage[2], arrayPackage[3], arrayPackage[4], arrayPackage[5]);
+
+            } else if (arrayPackage[0].StartsWith(Messages.sLikeSet) && arrayPackage.Length >= 3) {      // c!like_set#mail1#mail2#
+                return LikeSet(arrayPackage[1], arrayPackage[2]);
+
             }
 
             return "";
@@ -49,7 +53,7 @@ namespace Server.MainServer {
         /// <param name="mail">first credidential, primary key</param>
         /// <param name="password">second credidential, is always hashed</param>
         /// <returns>'login_ok' and user data if account exists, 'login_err' if the account doesn't exist</returns>
-        private String LoginReq(String mail, String password) {
+        private String LoginReq (String mail, String password) {
             try {
                 User user = DbHandler.instance.getUser(mail, int.Parse(password));
 
@@ -69,7 +73,7 @@ namespace Server.MainServer {
         /// <summary>Creates a new user if the account doesn't already exist</summary>
         /// <param name="package">contains all the user data, splitted by ','</param>
         /// <returns>'reg_ok' if account was created, 'reg_err' if the account already exists</returns>
-        private String RegReq(String package) {
+        private String RegReq (String package) {
             String[] userData = package.Split(",");
 
             if (userData.Length < 5) {
@@ -121,14 +125,17 @@ namespace Server.MainServer {
                 List<User> users = DbHandler.instance.GetUsers(ageMin, ageMax, sMale, sFemale, sOther);
 
                 StringBuilder message = new StringBuilder();
+                const int MAXIMUM_NUMBER = 20; // maximum number of people sent to the client
                 int l = 0;
 
                 foreach (User user in users) {
                     message.Append(user.GetSomeUserData());
                     l++;
                     
-                    if (l < users.Count) {
+                    if (l < users.Count && l < MAXIMUM_NUMBER) {
                         message.Append("$");
+                    } else {
+                        break;
                     }
                 }
 
@@ -139,6 +146,23 @@ namespace Server.MainServer {
 
             } catch (Exception e) {
                 return Messages.sGetPErr;
+            }
+        }
+
+
+        /// LIKES ///
+        /// <summary>Sets the fact that a user liked another user</summary>
+        /// <param name="mail1">the user that likes</param>
+        /// <param name="mail2">the user that is liked</param>
+        /// <returns>'like_ok' when the operation is a success</returns>
+        private String LikeSet (String mail1, String mail2) {
+            try {
+                DbHandler.instance.likeUser(mail1, mail2);
+                return Messages.sLikeOk;
+
+            } catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return Messages.sLikeErr;
             }
         }
 

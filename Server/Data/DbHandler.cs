@@ -70,6 +70,27 @@ namespace Server.Data {
             return user;
         }
 
+        public bool userExists(String mail) {
+            ConnectToDB();
+            bool ok = false;
+
+            if (isConnectionOpened()) {
+                String commandText = "SELECT * FROM users_table WHERE mail = @mail;";
+                SQLiteCommand command = new SQLiteCommand(commandText, connection);
+
+                command.Parameters.Add("@mail", System.Data.DbType.String);
+                command.Parameters["@mail"].Value = mail;
+
+                SQLiteDataReader reader = command.ExecuteReader();
+                if (reader.Read()) {
+                    ok = true;
+                }
+            }
+
+            DisconnectFromDB();
+            return ok;
+        }
+
         public void insertUser(User user) {
             ConnectToDB();
             if (isConnectionOpened()) {
@@ -149,6 +170,26 @@ namespace Server.Data {
             return users;
         }
 
+        public void likeUser(String mail1, String mail2) {
+            if (!userExists(mail1) || !userExists(mail2))
+                return;
+
+            ConnectToDB();
+            if (isConnectionOpened()) {
+                String commandText = "INSERT INTO likes_table VALUES(@mail1, @mail2);";
+                SQLiteCommand command = new SQLiteCommand(commandText, connection);
+
+                command.Parameters.Add("@mail1", System.Data.DbType.String);
+                command.Parameters["@mail1"].Value = mail1;
+
+                command.Parameters.Add("@mail2", System.Data.DbType.String);
+                command.Parameters["@mail2"].Value = mail2;
+
+                command.ExecuteNonQuery();
+            }
+            DisconnectFromDB();
+        }
+
 
         /// TESTS ///
         public void TEST_Add() {
@@ -175,6 +216,14 @@ namespace Server.Data {
                     Console.WriteLine(reader.GetInt32(0) + " | " + reader.GetString(1));
                 }
                 Console.WriteLine("OK");
+            }
+            DisconnectFromDB();
+        }
+
+        public void TEST_GET_LIKES() {
+            ConnectToDB();
+            if (isConnectionOpened()) {
+                ;
             }
             DisconnectFromDB();
         }
