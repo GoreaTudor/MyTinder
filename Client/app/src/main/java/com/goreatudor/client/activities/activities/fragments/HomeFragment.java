@@ -6,15 +6,19 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.goreatudor.client.R;
+import com.goreatudor.client.activities.data.CurrentUser;
 import com.goreatudor.client.activities.data.User;
 import com.goreatudor.client.activities.helper.GLOBAL;
 import com.goreatudor.client.activities.helper.MyItemAdapter;
+import com.goreatudor.client.activities.threads.LikeThread;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -57,12 +61,16 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onLeftCardExit(Object o) {
-                Log.d("SWIPE", "Liked " + user.getFullName());
+                Log.d("SWIPE", "Ignored " + user.getFullName());
             }
 
             @Override
             public void onRightCardExit(Object o) {
-                Log.d("SWIPE", "Ignored " + user.getFullName());
+                Log.d("SWIPE", "Liked " + user.getFullName());
+                Toast.makeText(context, "liked " + user.getFullName(), Toast.LENGTH_SHORT).show();
+
+                Handler handler = new Handler();
+                new LikeThread(CurrentUser.getInstance().getMail(), user, context, handler).start();
             }
 
             @Override

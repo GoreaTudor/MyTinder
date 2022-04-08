@@ -56,5 +56,25 @@
             app:layout_constraintBottom_toBottomOf="@+id/swipe_lbl_age"
             app:layout_constraintStart_toEndOf="@+id/swipe_lbl_age"
             app:layout_constraintTop_toTopOf="@+id/swipe_lbl_age" />
+
+        <ImageView
+            android:id="@+id/swipe_img_ignore"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_ignore" />
+
+        <ImageView
+            android:id="@+id/swipe_img_like"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_matches" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

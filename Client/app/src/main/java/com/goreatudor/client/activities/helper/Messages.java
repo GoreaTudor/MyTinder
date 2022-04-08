@@ -18,4 +18,9 @@ public interface Messages {
     String sGetPOk = "getP_ok";
     String sGetPErr = "getP_err";
     String sGetPInv = "getP_inv";
+
+    String sLikeSet   = "like_set";
+    String sLikeReset = "like_reset";
+    String sLikeOk    = "like_ok";
+    String sLikeErr   = "like_err";
 }

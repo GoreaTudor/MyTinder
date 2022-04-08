@@ -37,7 +37,7 @@ public class RegistrationThread extends Thread {
         try {
             Socket socket = new Socket(ip, port);
 
-            String message = Messages.sRegReq + "#" + user.toString();
+            String message = Messages.sRegReq + "#" + user.getUserData();
             Helper.sendMessage(socket, message);
 
             Thread.sleep(1000);
