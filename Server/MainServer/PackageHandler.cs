@@ -27,7 +27,10 @@ namespace Server.MainServer {
             } else if (arrayPackage[0].StartsWith(Messages.sTestGet)) {                                 // c!test_get#
                 return TEST_Get();
 
-            } else if (arrayPackage[0].StartsWith(Messages.sTestGetLikes)) {                            // c!test_likes#
+            } else if (arrayPackage[0].StartsWith(Messages.sTestLikesAdd)) {                            // c!test_likes_add#
+                return TEST_Add_Likes();
+
+            } else if (arrayPackage[0].StartsWith(Messages.sTestLikesGet)) {                            // c!test_likes_get#
                 return TEST_Get_Likes();
 
             } else if (arrayPackage[0].StartsWith(Messages.sTablePop)) {                                // c!table_populate#
@@ -190,14 +193,28 @@ namespace Server.MainServer {
             return "Response example GET";
         }
 
-        private String TEST_Get_Likes() {
+        private String TEST_Add_Likes() {
             try {
-                DbHandler.instance.TEST_GET_LIKES();
+                DbHandler.instance.TEST_ADD_LIKES();
+                return "ADD_LIKES  OK";
 
             } catch (Exception e) {
                 Console.WriteLine(e.Message);
-            }
-            return "Solving likes_table problem";
+                return "ADD_LIKES  ERROR";
+            }  
         }
+
+        private String TEST_Get_Likes() {
+            try {
+                DbHandler.instance.TEST_GET_LIKES();
+                return "GET_LIKES  OK";
+
+            } catch (Exception e) {
+                Console.WriteLine(e.Message);
+                return "GET_LIKES  ERROR";
+            } 
+        }
+
+
     }
 }

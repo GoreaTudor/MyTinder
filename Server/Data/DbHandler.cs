@@ -171,8 +171,8 @@ namespace Server.Data {
         }
 
         public void likeUser(String mail1, String mail2) {
-            if (!userExists(mail1) || !userExists(mail2))
-                return;
+            /*if (!userExists(mail1) || !userExists(mail2))
+                return;*/
 
             ConnectToDB();
             if (isConnectionOpened()) {
@@ -216,6 +216,20 @@ namespace Server.Data {
                     Console.WriteLine(reader.GetInt32(0) + " | " + reader.GetString(1));
                 }
                 Console.WriteLine("OK");
+            }
+            DisconnectFromDB();
+        }
+
+
+        private int i = 0;
+        public void TEST_ADD_LIKES() {
+            ConnectToDB();
+            if (isConnectionOpened()) {
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandText = "INSERT INTO likes_table VALUES( 'TEST_1_" + i + "', 'TEST_2_" + i + "' );";
+                command.ExecuteNonQuery();
+                i++;
+                Console.WriteLine("TEST_ADD_LIKES: OK");
             }
             DisconnectFromDB();
         }
