@@ -223,7 +223,16 @@ namespace Server.Data {
         public void TEST_GET_LIKES() {
             ConnectToDB();
             if (isConnectionOpened()) {
-                ;
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM likes_table;";
+
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                Console.WriteLine("TEST_GET_LIKES: ");
+                while (reader.Read()) {
+                    Console.WriteLine(reader.GetString(0) + " | " + reader.GetString(1));
+                }
+                Console.WriteLine("OK");
             }
             DisconnectFromDB();
         }

@@ -27,6 +27,9 @@ namespace Server.MainServer {
             } else if (arrayPackage[0].StartsWith(Messages.sTestGet)) {                                 // c!test_get#
                 return TEST_Get();
 
+            } else if (arrayPackage[0].StartsWith(Messages.sTestGetLikes)) {                            // c!test_likes#
+                return TEST_Get_Likes();
+
             } else if (arrayPackage[0].StartsWith(Messages.sTablePop)) {                                // c!table_populate#
                 return Table_Populate();
 
@@ -185,6 +188,16 @@ namespace Server.MainServer {
         private String TEST_Get () {
             DbHandler.instance.TEST_Get();
             return "Response example GET";
+        }
+
+        private String TEST_Get_Likes() {
+            try {
+                DbHandler.instance.TEST_GET_LIKES();
+
+            } catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
+            return "Solving likes_table problem";
         }
     }
 }

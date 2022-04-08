@@ -9,6 +9,7 @@ namespace Server.MainServer {
     class Messages {
         public static readonly String sTestAdd = "test_add";
         public static readonly String sTestGet = "test_get";
+        public static readonly String sTestGetLikes = "test_likes";
 
         public static readonly String sTablePop = "table_populate";
 
