@@ -37,8 +37,6 @@ public class MatchesFragment extends Fragment {
         users.add(new User("dummy1@gmail.com", 1111, "dummy1", 18, "male"));
         users.add(new User("dummy2@gmail.com", 2222, "dummy2", 19, "female"));
         users.add(new User("dummy3@gmail.com", 3333, "dummy3", 20, "other"));
-        users.add(new User("dummy4@gmail.com", 4444, "dummy4", 21, "nope"));
-        users.add(new User("dummy5@gmail.com", 5555, "dummy5", 22, "female"));
 
         MatchesAdapter adapter = new MatchesAdapter(context, users);
         recyclerView.setAdapter(adapter);

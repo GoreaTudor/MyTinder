@@ -1,14 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.activities.fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="PROFILE" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#51009688"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_img"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profile_lbl_fname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/full_name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/profile_img"
+            app:layout_constraintTop_toTopOf="@+id/profile_img" />
+
+        <TextView
+            android:id="@+id/profile_txt_fname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="fname"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_lbl_fname"
+            app:layout_constraintStart_toEndOf="@+id/profile_lbl_fname"
+            app:layout_constraintTop_toTopOf="@+id/profile_lbl_fname" />
+
+        <TextView
+            android:id="@+id/profile_lbl_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/age"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/profile_lbl_gender"
+            app:layout_constraintTop_toBottomOf="@+id/profile_lbl_gender" />
+
+        <TextView
+            android:id="@+id/profile_txt_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="age"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_lbl_age"
+            app:layout_constraintStart_toEndOf="@+id/profile_lbl_age"
+            app:layout_constraintTop_toTopOf="@+id/profile_lbl_age" />
+
+        <TextView
+            android:id="@+id/profile_lbl_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/gender"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/profile_lbl_fname"
+            app:layout_constraintTop_toBottomOf="@+id/profile_lbl_fname" />
+
+        <TextView
+            android:id="@+id/profile_txt_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="gender"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_lbl_gender"
+            app:layout_constraintStart_toEndOf="@+id/profile_lbl_gender"
+            app:layout_constraintTop_toTopOf="@+id/profile_lbl_gender" />
+
+        <TextView
+            android:id="@+id/profile_lbl_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/mail"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/profile_img"
+            app:layout_constraintTop_toBottomOf="@+id/profile_img" />
+
+        <TextView
+            android:id="@+id/profile_txt_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="mail"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_lbl_mail"
+            app:layout_constraintStart_toEndOf="@+id/profile_lbl_mail"
+            app:layout_constraintTop_toTopOf="@+id/profile_lbl_mail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/people_you_liked"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

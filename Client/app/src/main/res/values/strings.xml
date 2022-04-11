@@ -22,6 +22,6 @@
     <string name="home">Home</string>
     <string name="matches">Matches</string>
     <string name="profile">Profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="people_you_liked">People you liked:</string>
+    <string name="your_matches">Your matches:</string>
 </resources>

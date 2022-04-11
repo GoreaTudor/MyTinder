@@ -5,26 +5,72 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/rv_matches_img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rv_matches_layout"
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="#40FF0057"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_matches" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/rv_matches_fname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/full_name"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rv_matches_img"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/rv_matches_img"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_matches" />
+
+        <TextView
+            android:id="@+id/rv_matches_fname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="full name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/rv_matches_img"
+            app:layout_constraintTop_toTopOf="@+id/rv_matches_img" />
+
+        <TextView
+            android:id="@+id/rv_matches_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="age"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_matches_fname"
+            app:layout_constraintStart_toEndOf="@+id/rv_matches_fname"
+            app:layout_constraintTop_toTopOf="@+id/rv_matches_fname" />
+
+        <TextView
+            android:id="@+id/rv_matches_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="gender"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_matches_age"
+            app:layout_constraintStart_toEndOf="@+id/rv_matches_age"
+            app:layout_constraintTop_toTopOf="@+id/rv_matches_age" />
+
+        <TextView
+            android:id="@+id/rv_matches_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mail"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_matches_img"
+            app:layout_constraintStart_toStartOf="@+id/rv_matches_fname" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

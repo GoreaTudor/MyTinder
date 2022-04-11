@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragment_home = new HomeFragment(this);
         fragment_matches = new MatchesFragment(this);
-        fragment_profile = new ProfileFragment();
+        fragment_profile = new ProfileFragment(this);
 
         setCurrentFragment(fragment_home);
         navigationView = findViewById(R.id.main_navBar);
