@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         fragment_home = new HomeFragment(this);
-        fragment_matches = new MatchesFragment();
+        fragment_matches = new MatchesFragment(this);
         fragment_profile = new ProfileFragment();
 
         setCurrentFragment(fragment_home);
